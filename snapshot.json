@@ -1,0 +1,130 @@
+{
+  "date": "2025-10-22",
+  "extractedAt": "2025-10-22T09:37:11.096Z",
+  "volumeLeaders": [
+    {
+      "SYMBOL": "KEL",
+      "PRICE": "6.20",
+      "CHANGE": "-0.31 (-4.76%)",
+      "VOLUME": "200,814,361"
+    },
+    {
+      "SYMBOL": "WTL",
+      "PRICE": "2.07",
+      "CHANGE": "0.02 (0.98%)",
+      "VOLUME": "120,293,135"
+    },
+    {
+      "SYMBOL": "TELE",
+      "PRICE": "12.78",
+      "CHANGE": "0.64 (5.27%)",
+      "VOLUME": "83,369,540"
+    },
+    {
+      "SYMBOL": "BOP",
+      "PRICE": "40.05",
+      "CHANGE": "0.32 (0.80%)",
+      "VOLUME": "75,643,941"
+    },
+    {
+      "SYMBOL": "TREET",
+      "PRICE": "34.10",
+      "CHANGE": "3.10 (10.00%)",
+      "VOLUME": "71,736,942"
+    },
+    {
+      "SYMBOL": "PIBTL",
+      "PRICE": "16.10",
+      "CHANGE": "-0.04 (-0.25%)",
+      "VOLUME": "62,602,456"
+    },
+    {
+      "SYMBOL": "PTC",
+      "PRICE": "42.10",
+      "CHANGE": "1.86 (4.62%)",
+      "VOLUME": "56,732,694"
+    },
+    {
+      "SYMBOL": "FNEL",
+      "PRICE": "14.25",
+      "CHANGE": "1.30 (10.04%)",
+      "VOLUME": "44,296,104"
+    },
+    {
+      "SYMBOL": "FCSC",
+      "PRICE": "8.03",
+      "CHANGE": "1.00 (14.22%)",
+      "VOLUME": "43,237,589"
+    },
+    {
+      "SYMBOL": "LOADS",
+      "PRICE": "20.74",
+      "CHANGE": "1.89 (10.03%)",
+      "VOLUME": "32,858,498"
+    }
+  ],
+  "topAdvancers": [
+    {
+      "SYMBOL": "KEL",
+      "PRICE": "6.20",
+      "CHANGE": "-0.31 (-4.76%)",
+      "VOLUME": "200,814,361"
+    },
+    {
+      "SYMBOL": "WTL",
+      "PRICE": "2.07",
+      "CHANGE": "0.02 (0.98%)",
+      "VOLUME": "120,293,135"
+    },
+    {
+      "SYMBOL": "TELE",
+      "PRICE": "12.78",
+      "CHANGE": "0.64 (5.27%)",
+      "VOLUME": "83,369,540"
+    },
+    {
+      "SYMBOL": "BOP",
+      "PRICE": "40.05",
+      "CHANGE": "0.32 (0.80%)",
+      "VOLUME": "75,643,941"
+    },
+    {
+      "SYMBOL": "TREET",
+      "PRICE": "34.10",
+      "CHANGE": "3.10 (10.00%)",
+      "VOLUME": "71,736,942"
+    },
+    {
+      "SYMBOL": "PIBTL",
+      "PRICE": "16.10",
+      "CHANGE": "-0.04 (-0.25%)",
+      "VOLUME": "62,602,456"
+    },
+    {
+      "SYMBOL": "PTC",
+      "PRICE": "42.10",
+      "CHANGE": "1.86 (4.62%)",
+      "VOLUME": "56,732,694"
+    },
+    {
+      "SYMBOL": "FNEL",
+      "PRICE": "14.25",
+      "CHANGE": "1.30 (10.04%)",
+      "VOLUME": "44,296,104"
+    },
+    {
+      "SYMBOL": "FCSC",
+      "PRICE": "8.03",
+      "CHANGE": "1.00 (14.22%)",
+      "VOLUME": "43,237,589"
+    },
+    {
+      "SYMBOL": "LOADS",
+      "PRICE": "20.74",
+      "CHANGE": "1.89 (10.03%)",
+      "VOLUME": "32,858,498"
+    }
+  ],
+  "newInVolumeLeaders": [],
+  "newInTopAdvancers": []
+}

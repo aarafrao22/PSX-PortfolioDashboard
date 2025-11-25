@@ -2,29 +2,29 @@ name: Daily PSX Fetch
 
 on:
   schedule:
-    - cron: "30 11 * * 1-5"  # Runs every weekday at 4:30 PM Pakistan time
-  workflow_dispatch:  # allows manual trigger
+    - cron: "0 */2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write   # 👈 REQUIRED FOR COMMIT + PUSH
 
 jobs:
   fetch:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Run fetch script
+      - name: Run fetchData.js
         run: node fetchData.js
 
-      - name: Commit updated data
+      - name: Commit & Push new data
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"

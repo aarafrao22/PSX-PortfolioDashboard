@@ -1,42 +1,42 @@
 [
   {
     "symbol": "WTL",
-    "volume": "31,617,614"
-  },
-  {
-    "symbol": "FNEL",
-    "volume": "20,392,158"
-  },
-  {
-    "symbol": "KEL",
-    "volume": "18,192,195"
-  },
-  {
-    "symbol": "BECO",
-    "volume": "16,329,411"
-  },
-  {
-    "symbol": "BML",
-    "volume": "15,357,535"
+    "volume": "45,961,923"
   },
   {
     "symbol": "HUMNL",
-    "volume": "15,124,631"
+    "volume": "38,013,115"
   },
   {
-    "symbol": "PTC",
-    "volume": "14,270,238"
+    "symbol": "DSLNC",
+    "volume": "34,360,228"
   },
   {
     "symbol": "BOP",
-    "volume": "13,996,976"
+    "volume": "28,723,655"
+  },
+  {
+    "symbol": "FNEL",
+    "volume": "26,681,222"
   },
   {
     "symbol": "PACE",
-    "volume": "12,846,552"
+    "volume": "24,283,094"
   },
   {
-    "symbol": "PIBTL",
-    "volume": "8,259,891"
+    "symbol": "KEL",
+    "volume": "23,720,718"
+  },
+  {
+    "symbol": "PTC",
+    "volume": "19,271,606"
+  },
+  {
+    "symbol": "BECO",
+    "volume": "19,149,110"
+  },
+  {
+    "symbol": "BML",
+    "volume": "18,027,320"
   }
 ]

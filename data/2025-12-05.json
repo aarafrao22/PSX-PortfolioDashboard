@@ -1,42 +1,42 @@
 [
   {
     "symbol": "TELE",
-    "volume": "52,171,880"
-  },
-  {
-    "symbol": "FDPL",
-    "volume": "37,473,544"
+    "volume": "58,072,392"
   },
   {
     "symbol": "FNEL",
-    "volume": "33,498,786"
+    "volume": "44,579,133"
   },
   {
-    "symbol": "WTL",
-    "volume": "23,535,398"
+    "symbol": "FDPL",
+    "volume": "39,944,683"
   },
   {
     "symbol": "PIAHCLA",
-    "volume": "21,923,029"
+    "volume": "37,813,443"
   },
   {
-    "symbol": "CNERGY",
-    "volume": "19,963,271"
-  },
-  {
-    "symbol": "TPLPNC",
-    "volume": "17,074,238"
+    "symbol": "WTL",
+    "volume": "35,327,078"
   },
   {
     "symbol": "PTC",
-    "volume": "16,908,882"
+    "volume": "26,029,578"
   },
   {
-    "symbol": "PACE",
-    "volume": "13,879,628"
+    "symbol": "CNERGY",
+    "volume": "22,332,759"
+  },
+  {
+    "symbol": "TPLPNC",
+    "volume": "19,289,830"
+  },
+  {
+    "symbol": "PPL",
+    "volume": "19,146,182"
   },
   {
     "symbol": "BOP",
-    "volume": "13,379,854"
+    "volume": "17,743,556"
   }
 ]

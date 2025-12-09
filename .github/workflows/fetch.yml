@@ -2,7 +2,7 @@ name: Daily PSX Fetch
 
 on:
   schedule:
-    - cron: "0 */2 * * *"
+    - cron: "30 11 * * *"   # Runs once per day at 4:30 PM PKT
   workflow_dispatch:
 
 permissions:

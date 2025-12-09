@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Entrant Volume Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        #results {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background: #222;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Volume Spike Detector — New Entrants Only</h2>
+<p>Find stocks that were <b>NOT present</b> in any previous day’s volume list but suddenly appear with high volume.</p>
+
+<input type="file" id="fileInput" multiple accept=".json" />
+<button onclick="processFiles()">Analyze</button>
+
+<div id="results"></div>
+
+<script>
+async function processFiles() {
+    const input = document.getElementById('fileInput');
+    const resultsDiv = document.getElementById('results');
+
+    if (!input.files.length) {
+        alert("Please select a folder with JSON files.");
+        return;
+    }
+
+    const files = Array.from(input.files).filter(f => f.name.endsWith('.json'));
+    files.sort((a, b) => a.name.localeCompare(b.name)); // Sort by date
+
+    let historySymbols = new Set();
+    let spikeResults = [];
+
+    for (const file of files) {
+        const text = await file.text();
+        let json;
+        try { json = JSON.parse(text); }
+        catch { continue; }
+
+        // Extract date from filename like 2025-11-27.json
+        const date = file.name.split('.')[0];('.json', '');
+
+        for (const entry of json) {
+            const symbol = entry.symbol;
+            const volume = Number(entry.volume.replace(/,/g, ''));
+
+            // NEW LOGIC:
+            // A stock is a "new entrant" if it NEVER appeared in any previous file.
+            if (!historySymbols.has(symbol)) {
+                spikeResults.push({ date, symbol, volume });
+            }
+        }
+
+        // Add all today's symbols into history
+        json.forEach(e => historySymbols.add(e.symbol));
+    }
+
+    if (spikeResults.length === 0) {
+        resultsDiv.innerHTML = "<p>No new volume entrants were detected.</p>";
+        return;
+    }
+
+    resultsDiv.innerHTML = `
+        <h3>New Entrants Detected</h3>
+        <table>
+            <tr><th>Date</th><th>Symbol</th><th>Volume</th></tr>
+            ${spikeResults.map(r => `
+                <tr>
+                    <td>${r.date}</td>
+                    <td>${r.symbol}</td>
+                    <td>${r.volume.toLocaleString()}</td>
+                </tr>`).join('')}
+        </table>
+    `;
+}
+</script>
+
+</body>
+</html>

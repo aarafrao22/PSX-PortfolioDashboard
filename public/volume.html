@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>New Entrant Volume Detector</title>
@@ -97,6 +97,142 @@ async function processFiles() {
                 </tr>`).join('')}
         </table>
     `;
+}
+</script>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Volume Leader Entrants</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 20px;
+    }
+    h2 {
+      margin-bottom: 5px;
+    }
+    p {
+      color: #444;
+    }
+    button {
+      padding: 8px 14px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      background: #fff;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background: #111;
+      color: #fff;
+    }
+    .UP { color: green; font-weight: bold; }
+    .DOWN { color: red; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<h2>📊 New Volume Leader Entrants Detector</h2>
+<p>
+Detect stocks that were <b>not present in previous days</b> but appeared in volume leaders on a new day.
+</p>
+
+<input type="file" id="fileInput" webkitdirectory directory multiple />
+<button onclick="processFiles()">Analyze</button>
+
+<div id="results"></div>
+
+<script>
+async function processFiles() {
+  const input = document.getElementById('fileInput');
+  const resultsDiv = document.getElementById('results');
+
+  if (!input.files.length) {
+    alert('Please select a folder containing JSON files');
+    return;
+  }
+
+  const files = Array.from(input.files)
+    .filter(f => f.name.endsWith('.json'))
+    .sort((a, b) => a.name.localeCompare(b.name)); // chronological
+
+  const seenSymbols = new Set();
+  const newEntrants = [];
+
+  for (const file of files) {
+    const text = await file.text();
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      continue;
+    }
+
+    const date = file.name.replace('.json', ''); // YYYY-MM-DD
+
+    for (const row of data) {
+      const symbol = row.symbol;
+      const volume = Number(String(row.volume).replace(/,/g, '')) || 0;
+      const percentChange = row.change || '-';
+      const direction = String(percentChange).startsWith('-') ? 'DOWN' : 'UP';
+
+      // NEW ENTRANT LOGIC
+      if (!seenSymbols.has(symbol)) {
+        newEntrants.push({
+          date,
+          symbol,
+          volume,
+          percentChange,
+          direction,
+          file: file.name
+        });
+      }
+    }
+
+    // Mark all today's symbols as seen
+    data.forEach(r => seenSymbols.add(r.symbol));
+  }
+
+  if (!newEntrants.length) {
+    resultsDiv.innerHTML = '<p>No new volume leader entrants found.</p>';
+    return;
+  }
+
+  resultsDiv.innerHTML = `
+    <h3>✅ New Volume Entrants</h3>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Symbol</th>
+        <th>Volume</th>
+        <th>% Change</th>
+        <th>Direction</th>
+        <th>File</th>
+      </tr>
+      ${newEntrants.map(r => `
+        <tr>
+          <td>${r.date}</td>
+          <td>${r.symbol}</td>
+          <td>${r.volume.toLocaleString()}</td>
+          <td class="${r.direction}">${r.percentChange}</td>
+          <td class="${r.direction}">${r.direction}</td>
+          <td>${r.file}</td>
+        </tr>
+      `).join('')}
+    </table>
+  `;
 }
 </script>
 

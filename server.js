@@ -138,9 +138,8 @@ app.get("/api/snapshot", (req, res) => {
     if (!fs.existsSync(dataDir))
       return res.status(404).json({ error: "Data folder missing" });
 
-    const files = fs
-      .readdirSync(dataDir)
-      .filter((f) => f.endsWith(".json"))
+    const files = fs.readdirSync(dataDir)
+      .filter(f => f.endsWith(".json"))
       .sort();
 
     if (files.length === 0)
@@ -154,22 +153,21 @@ app.get("/api/snapshot", (req, res) => {
       ? JSON.parse(fs.readFileSync(path.join(dataDir, prevFile)))
       : [];
 
-    // 🧠 Auto-handle both formats: array OR wrapped object
+    // Handle both array and object JSONs
     const todayData = Array.isArray(todayRaw)
       ? { date: latestFile.replace(".json", ""), volumeLeaders: todayRaw }
       : todayRaw;
-
     const yesterdayData = Array.isArray(prevRaw)
       ? { volumeLeaders: prevRaw }
       : prevRaw;
 
-    const todaySymbols = todayData.volumeLeaders.map((s) => s.symbol);
+    const todaySymbols = todayData.volumeLeaders.map(s => s.symbol);
     const prevSymbols = yesterdayData.volumeLeaders
-      ? yesterdayData.volumeLeaders.map((s) => s.symbol)
+      ? yesterdayData.volumeLeaders.map(s => s.symbol)
       : [];
 
     const newEntries = todayData.volumeLeaders.filter(
-      (s) => !prevSymbols.includes(s.symbol)
+      s => !prevSymbols.includes(s.symbol)
     );
 
     res.json({
@@ -182,6 +180,7 @@ app.get("/api/snapshot", (req, res) => {
     res.status(500).json({ error: "Failed to compare snapshots." });
   }
 });
+
 
 
 

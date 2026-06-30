@@ -16,7 +16,8 @@ if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir);
   const browser = await puppeteer.launch({ headless: true, args: ["--no-sandbox"] });
   const page = await browser.newPage();
   await page.goto(DPS_URL, { waitUntil: "networkidle2", timeout: 30000 });
-  await page.waitForTimeout(2000);
+  // await page.waitForTimeout(2000);
+  await new Promise(resolve => setTimeout(resolve, 2000));
 
   // Extract table data
   const data = await page.evaluate(() => {

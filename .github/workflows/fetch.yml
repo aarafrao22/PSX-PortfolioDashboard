@@ -12,7 +12,11 @@ jobs:
   fetch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: main # 👈 Force workflow to bind directly to main branch
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -24,11 +28,27 @@ jobs:
       - name: Run fetchData.js
         run: node fetchData.js
 
+      - name: Debug - See what changed
+        run: |
+          echo "=== Current Directory Content ==="
+          ls -la
+          echo "=== Data Directory Content ==="
+          ls -la data/ || echo "data/ folder does not exist!"
+          echo "=== Git Status ==="
+          git status
+
       - name: Commit & Push new data
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add data/*.json
-          git commit -m "📈 Auto update leaders data" || echo "No changes to commit"
-          git push
-
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # Stage the entire data folder to ensure new/modified files are tracked
+          git add data/
+          
+          # Check if there are actual changes staged before attempting a commit
+          if ! git diff --cached --quiet; then
+            git commit -m "📈 Auto update leaders data"
+            git push origin main
+          else
+            echo "No changes detected in the data directory. Skipping push."
+          fi
